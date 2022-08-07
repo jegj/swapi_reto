@@ -12,7 +12,7 @@
   "species": "especies",
   "vehicles": "vehiculos",
   "starships": "naves",
-  "created": "creacion",
-  "edited": "edicion",
+  "created": "swapi_creacion",
+  "edited": "swapi_edicion",
   "url": "url"
 }

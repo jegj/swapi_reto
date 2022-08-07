@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 const { SWAPI_SOURCE } = require('../libs/utils');
-const { SWAPI_REQUEST_ERROR, handleAxiosError } = require('../libs/error');
+const { SWAPI_REQUEST_ERROR, handleSourceError } = require('../libs/error');
 const getConfig = require('./peopleAxiosConfig');
 
 const peopleAxiosDataSource = (axiosConfig = getConfig()) => Object.freeze({
@@ -27,9 +27,9 @@ const peopleAxiosDataSource = (axiosConfig = getConfig()) => Object.freeze({
       };
 
       body = await axios(config);
-      response = [null, body.data];
+      response = [null, { ...body.data, ...{ id } }];
     } catch (error) {
-      response = [handleAxiosError(SWAPI_REQUEST_ERROR, SWAPI_SOURCE, error)];
+      response = [handleSourceError(SWAPI_REQUEST_ERROR, SWAPI_SOURCE, error)];
     }
     return response;
   }

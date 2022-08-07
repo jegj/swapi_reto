@@ -14,7 +14,7 @@ provider:
   stage: dev
   region: us-east-2
 functions:
-  starwars-get-people:
+  starwars-get-people-by-id:
     handler: src/functions/starwars-get-people-by-id/index.handler
     events:
       - http:
@@ -24,3 +24,9 @@ functions:
             parameters:
              paths:
                id: true
+  starwars-post-people:
+    handler: src/functions/starwars-post-people/index.handler
+    events:
+      - http:
+          method: POST
+          path: people

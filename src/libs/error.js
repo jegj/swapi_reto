@@ -1,6 +1,7 @@
 /* src/libs/error.js */
 
 const GENERIC_ERROR = 'GenericSWError';
+const DATABASE_ERROR = 'DatabaseSWError';
 const SWAPI_REQUEST_ERROR = 'SwapiRequestError';
 
 const { getValidSource } = require('./utils');
@@ -29,7 +30,7 @@ class SWError extends Error {
     message
   }
  */
-const handleAxiosError = (name, source, err) => {
+const handleSourceError = (name, source, err) => {
   let status;
   let message;
   let external = false;
@@ -54,5 +55,6 @@ module.exports = {
   GENERIC_ERROR,
   SWAPI_REQUEST_ERROR,
   SWError,
-  handleAxiosError
+  handleSourceError,
+  DATABASE_ERROR
 };

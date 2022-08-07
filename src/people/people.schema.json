@@ -1,0 +1,75 @@
+[
+  {
+    "$id": "postPeople",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "peso": {
+        "type": "integer"
+      },
+      "altura": {
+        "type": "integer"
+      },
+      "nombre": {
+        "type": "string"
+      },
+      "color_pelo": {
+        "type": "string"
+      },
+      "color_piel": {
+        "type": "string"
+      },
+      "color_ojo": {
+        "type": "string"
+      },
+      "nacimiento": {
+        "type": "string"
+      },
+      "genero": {
+        "type": "string"
+      },
+      "planeta_origen": {
+        "type": "string"
+      },
+      "peliculas": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "especies": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "vehiculos": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "naves": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "url": {
+        "type": "string"
+      },
+      "swapi_creacion": {
+        "type": "string"
+      },
+      "swapi_edicion": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "additionalProperties": false
+  }
+]

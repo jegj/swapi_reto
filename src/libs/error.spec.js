@@ -1,6 +1,6 @@
 /* src/libs/error.spec.js */
 
-const { SWError, GENERIC_ERROR, handleAxiosError } = require('./error');
+const { SWError, GENERIC_ERROR, handleSourceError } = require('./error');
 const { INTERNAL_SOURCE } = require('./utils');
 
 describe('Error test suite', () => {
@@ -22,29 +22,29 @@ describe('Error test suite', () => {
       expect(error).toHaveProperty('external', false);
     });
   });
-  describe('#handleAxiosError', () => {
-    test('handleAxiosError retorna un SWError siempre', async () => {
-      const error = handleAxiosError(GENERIC_ERROR, INTERNAL_SOURCE, new Error('generic error'));
+  describe('#handleSourceError', () => {
+    test('handleSourceError retorna un SWError siempre', async () => {
+      const error = handleSourceError(GENERIC_ERROR, INTERNAL_SOURCE, new Error('generic error'));
       expect(error).toBeInstanceOf(SWError);
     });
 
-    test('handleAxiosError tiene informacion referente a respuesta http si el error original viene de llamada externas de axios', async () => {
+    test('handleSourceError tiene informacion referente a respuesta http si el error original viene de llamada externas de axios', async () => {
       const err = new Error('generic error');
       err.response = {
         status: 503,
         statusText: 'Service unavailable'
       };
-      const error = handleAxiosError(GENERIC_ERROR, INTERNAL_SOURCE, err);
+      const error = handleSourceError(GENERIC_ERROR, INTERNAL_SOURCE, err);
       expect(error).toBeInstanceOf(SWError);
       expect(error).toHaveProperty('httpCode', err.response.status);
     });
 
-    test('handleAxiosError tiene informacion referente a peticion http si el error original viene de llamada externas de axios', async () => {
+    test('handleSourceError tiene informacion referente a peticion http si el error original viene de llamada externas de axios', async () => {
       const err = new Error('generic error');
       err.request = {
         statusText: 'Axios request error'
       };
-      const error = handleAxiosError(GENERIC_ERROR, INTERNAL_SOURCE, err);
+      const error = handleSourceError(GENERIC_ERROR, INTERNAL_SOURCE, err);
       expect(error).toBeInstanceOf(SWError);
       expect(error).toHaveProperty('httpCode', 500);
     });
