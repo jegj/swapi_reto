@@ -3,9 +3,37 @@ service: starwars-functions
 plugins:
   - serverless-esbuild
   - serverless-offline
+  - serverless-openapi-documentation
 custom:
-    esbuild:
-      bundle: true
+  documentation:
+    version: '1'
+    title: 'Reto Indra'
+    description: 'Documentacion para el reto de Indra'
+    models:
+      - name: "GetPeopleResponse"
+        description: "HTTP Respuesta para obtener personas"
+        contentType: "application/json"
+        schema: ${file(docs/GetPeopleResponse.json)}
+      - name: "PostPeopleResponse"
+        description: "HTTP Respuesta para crear personas"
+        contentType: "application/json"
+        schema: ${file(docs/PostPeopleResponse.json)}
+      - name: "PostPeopleRequest"
+        description: "HTTP Request para crear personas"
+        contentType: "application/json"
+        schema: ${file(docs/PostPeopleRequest.json)}
+      - name: "ErrorResponse"
+        description: "Error"
+        contentType: "application/json"
+        schema:
+          type: "object"
+          properties:
+            statusCode:
+              type: "number"
+            body:
+              type: "object"
+  esbuild:
+    bundle: true
 package:
    individually: true
 provider:
@@ -24,9 +52,71 @@ functions:
             parameters:
              paths:
                id: true
+          documentation:
+            summary: "Obtiene una persona"
+            description: "Obtiene a una persona de SWAPI o la base de datos local"
+            pathParams:
+              - name: "id"
+                description: "El id correspondiente de la persona"
+                required: true
+                schema:
+                  type: "number"
+            queryParams:
+              - name: "source"
+                description: "La fuente de donde viene los datos"
+                required: false
+                schema:
+                  type: "string"
+                  enum:
+                    - "internal"
+                    - "swapi"
+            methodResponses:
+              - statusCode: 200
+                responseBody:
+                  description: "OK"
+                responseModels:
+                  application/json: "PosPeopleResponse"
+              - statusCode: 500
+                responseBody:
+                  description: "InternalError"
+                responseModels:
+                  application/json: "ErrorResponse"
+              - statusCode: 400
+                responseBody:
+                  description: "BadRequest"
+                responseModels:
+                  application/json: "ErrorResponse"
+              - statusCode: 404
+                responseBody:
+                  description: "NotFound"
+                responseModels:
+                  application/json: "ErrorResponse"
   starwars-post-people:
     handler: src/functions/starwars-post-people/index.handler
     events:
       - http:
           method: POST
           path: people
+          documentation:
+            summary: "Crea una persona"
+            description: "Crea una persona en la base de datos local"
+            requestBody:
+              description: "Informacion de la persona"
+            requestModels:
+              application/json: "PostPeopleRequest"
+            methodResponses:
+              - statusCode: 200
+                responseBody:
+                  description: "OK"
+                responseModels:
+                  application/json: "PostPeopleResponse"
+              - statusCode: 500
+                responseBody:
+                  description: "InternalError"
+                responseModels:
+                  application/json: "ErrorResponse"
+              - statusCode: 400
+                responseBody:
+                  description: "BadRequest"
+                responseModels:
+                  application/json: "ErrorResponse"

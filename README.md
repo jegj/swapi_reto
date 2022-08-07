@@ -28,9 +28,18 @@ npm run build
 npm run deploy
 ```
 
+## Generar documentacion
+
+
+```sh
+npm run docs
+```
+
+__IMPORTANTE__ Paquete `serverless-openapi-documentation` esta descontinuado y tiene fallas. Seria necesario buscar otra opcion para mejorar este comando.
+
 ## Preparar Base de datos de prueba
 
-Modificar el usuario por defecto 
+Modificar el usuario por defecto
 ```
 ALTER USER root IDENTIFIED WITH mysql_native_password BY 'devved';
 

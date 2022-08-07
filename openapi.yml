@@ -1,0 +1,184 @@
+openapi: 3.0.0
+components:
+  schemas:
+    GetPeopleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        peso:
+          type: integer
+        altura:
+          type: integer
+        nombre:
+          type: string
+        color_pelo:
+          type: string
+        color_piel:
+          type: string
+        color_ojos:
+          type: string
+        nacimiento:
+          type: string
+        genero:
+          type: string
+        planeta_origen:
+          type: string
+        peliculas:
+          type: array
+          items:
+            type: string
+        especies:
+          type: array
+          items:
+            type: string
+        vehiculos:
+          type: array
+          items:
+            type: string
+        naves:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        swapi_creacion:
+          type: string
+        swapi_edicion:
+          type: string
+    PostPeopleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+    PostPeopleRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+        peso:
+          type: integer
+        altura:
+          type: integer
+        nombre:
+          type: string
+        color_pelo:
+          type: string
+        color_piel:
+          type: string
+        color_ojos:
+          type: string
+        nacimiento:
+          type: string
+        genero:
+          type: string
+        planeta_origen:
+          type: string
+        peliculas:
+          type: array
+          items:
+            type: string
+        especies:
+          type: array
+          items:
+            type: string
+        vehiculos:
+          type: array
+          items:
+            type: string
+        naves:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        swapi_creacion:
+          type: string
+        swapi_edicion:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: number
+        body:
+          type: object
+  securitySchemes: {}
+info:
+  title: Reto Indra
+  description: Documentacion para el reto de Indra
+  version: '1'
+paths:
+  '/people/{id}':
+    get:
+      operationId: starwars-get-people-by-id
+      summary: Obtiene una persona
+      description: Obtiene a una persona de SWAPI o la base de datos local
+      parameters:
+        - name: id
+          in: path
+          description: Id de la persona
+          required: true
+          schema:
+            type: number
+        - name: source
+          in: query
+          description: Fuente de donde provienen los datos
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum:
+              - internal
+              - swapi
+      responses:
+        '200':
+          description: OK
+          content: {}
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: InternalError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /people:
+    post:
+      operationId: starwars-post-people
+      summary: Crea una persona
+      description: Crea una persona en la base de datos local
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPeopleRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPeopleResponse'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: InternalError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
