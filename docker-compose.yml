@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  mysql-development:
+    image: mysql:8.0.30
+    environment:
+      MYSQL_ROOT_PASSWORD: devved
+      MYSQL_DATABASE: swapi
+    ports:
+      - "3308:3306"

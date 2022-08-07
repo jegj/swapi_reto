@@ -1,0 +1,18 @@
+{
+  "name": "nombre",
+  "height": "altura",
+  "mass": "peso",
+  "hair_color": "color_pelo",
+  "skin_color": "color_piel",
+  "eye_color": "color_ojo",
+  "birth_year": "nacimiento",
+  "gender": "genero",
+  "homeworld": "planeta_origen",
+  "films": "peliculas",
+  "species": "especies",
+  "vehicles": "vehiculos",
+  "starships": "naves",
+  "created": "creacion",
+  "edited": "edicion",
+  "url": "url"
+}

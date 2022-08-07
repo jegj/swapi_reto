@@ -1,0 +1,26 @@
+useDotenv: true
+service: starwars-functions
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+custom:
+    esbuild:
+      bundle: true
+package:
+   individually: true
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: us-east-2
+functions:
+  starwars-get-people:
+    handler: src/functions/starwars-get-people-by-id/index.handler
+    events:
+      - http:
+          method: GET
+          path: people/{id}
+          request:
+            parameters:
+             paths:
+               id: true
