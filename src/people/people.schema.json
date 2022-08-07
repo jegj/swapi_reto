@@ -21,7 +21,7 @@
       "color_piel": {
         "type": "string"
       },
-      "color_ojo": {
+      "color_ojos": {
         "type": "string"
       },
       "nacimiento": {

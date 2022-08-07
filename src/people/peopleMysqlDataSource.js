@@ -29,7 +29,7 @@ const peopleMysqlDataSource = (host, user, password, database, port, connectionL
               'peso', people.peso,
               'color_pelo', people.color_pelo,
               'color_piel', people.color_piel,
-              'color_ojo', people.color_ojo,
+              'color_ojos', people.color_ojo,
               'nacimiento', people.nacimiento,
               'genero', people.genero,
               'planeta_origen', people.planeta_origen,
@@ -47,12 +47,14 @@ const peopleMysqlDataSource = (host, user, password, database, port, connectionL
               if (error) {
                 return reject(error);
               }
-              return resolve(elements[0]?.persona);
+              return resolve(
+                elements[0]?.persona !== undefined ? JSON.parse(elements[0]?.persona) : undefined
+              );
             });
           });
         };
         const res = await queryWrapper();
-        response = [null, JSON.parse(res)];
+        response = [null, res];
       } catch (error) {
         response = [handleSourceError(DATABASE_ERROR, INTERNAL_SOURCE, error)];
       }
