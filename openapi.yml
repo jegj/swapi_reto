@@ -7,9 +7,9 @@ components:
         id:
           type: integer
         peso:
-          type: integer
+          type: string
         altura:
-          type: integer
+          type: string
         nombre:
           type: string
         color_pelo:
@@ -57,9 +57,9 @@ components:
         id:
           type: integer
         peso:
-          type: integer
+          type: string
         altura:
-          type: integer
+          type: string
         nombre:
           type: string
         color_pelo:

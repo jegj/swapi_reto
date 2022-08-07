@@ -27,7 +27,7 @@ const peopleAxiosDataSource = (axiosConfig = getConfig()) => Object.freeze({
       };
 
       body = await axios(config);
-      response = [null, { ...body.data, ...{ id } }];
+      response = [null, { ...body.data, ...{ id: parseInt(id, 10) } }];
     } catch (error) {
       response = [handleSourceError(SWAPI_REQUEST_ERROR, SWAPI_SOURCE, error)];
     }

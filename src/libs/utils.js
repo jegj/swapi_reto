@@ -12,7 +12,7 @@ const mapEnglishToSpanish = (entity, langDestination) => {
   const nentity = {};
   Object.keys(entity).forEach((key) => {
     if ((Object.prototype.hasOwnProperty.call(langDestination, key))) {
-      nentity[langDestination[key]] = entity[key];
+      nentity[langDestination[key]] = key === 'id' ? parseInt(entity[key], 10) : entity[key];
     } else {
       nentity[key] = entity[key];
     }

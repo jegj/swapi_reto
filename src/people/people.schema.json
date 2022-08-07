@@ -7,10 +7,10 @@
         "type": "integer"
       },
       "peso": {
-        "type": "integer"
+        "type": "string"
       },
       "altura": {
-        "type": "integer"
+        "type": "string"
       },
       "nombre": {
         "type": "string"
