@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "3abe56e7-1b85-4fe6-8954-8424df09e284",
+		"name": "Starwars",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2334214"
+	},
+	"item": [
+		{
+			"name": "GET people",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/dev/people/12?source=swapi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"people",
+						"12"
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "swapi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST people",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Wilhuff Tarkin\",\n    \"altura\": \"180\",\n    \"peso\": \"unknown\",\n    \"color_pelo\": \"auburn, grey\",\n    \"color_piel\": \"fair\",\n    \"color_ojos\": \"blue\",\n    \"nacimiento\": \"64BBY\",\n    \"genero\": \"male\",\n    \"planeta_origen\": \"https://swapi.py4e.com/api/planets/21/\",\n    \"peliculas\": [\n        \"https://swapi.py4e.com/api/films/1/\",\n        \"https://swapi.py4e.com/api/films/6/\"\n    ],\n    \"especies\": [\n        \"https://swapi.py4e.com/api/species/1/\"\n    ],\n    \"vehiculos\": [],\n    \"naves\": [],\n    \"swapi_creacion\": \"2014-12-10T16:26:56.138000Z\",\n    \"swapi_edicion\": \"2014-12-20T21:17:50.330000Z\",\n    \"url\": \"https://swapi.py4e.com/api/people/12/\",\n    \"id\": 12\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/people",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"people"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
