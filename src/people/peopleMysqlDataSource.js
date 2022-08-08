@@ -19,6 +19,14 @@ const peopleMysqlDataSource = (host, user, password, database, port, connectionL
     getById: async (id) => {
       let response;
       try {
+        if (!id) {
+          const err = new Error('id es un parametro obligatorio');
+          err.response = {
+            status: 400,
+            statusText: 'Bad request'
+          };
+          throw err;
+        }
         const queryWrapper = () => {
           const query = `
             SELECT json_object(
@@ -63,6 +71,14 @@ const peopleMysqlDataSource = (host, user, password, database, port, connectionL
     post: async (data) => {
       let response;
       try {
+        if (!data) {
+          const err = new Error('id es un parametro obligatorio');
+          err.response = {
+            status: 400,
+            statusText: 'Bad request'
+          };
+          throw err;
+        }
         const queryWrapper = () => {
           const params = {
             id: data.id,
