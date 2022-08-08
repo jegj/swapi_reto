@@ -1,3 +1,7 @@
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'devved';
+
+FLUSH PRIVILEGES;
+
 CREATE TABLE IF NOT EXISTS people (
   id             int not null,
   nombre         varchar(255),
