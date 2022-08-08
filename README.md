@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/jegj/swapi_reto/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jegj/swapi_reto/actions/workflows/build.yml)
 # Reto Indra
 
 ## Functions
