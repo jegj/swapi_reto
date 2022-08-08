@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Reto de Indra",
   "scripts": {
-    "start": "npx sls offline -s dev",
+    "start": "docker-compose up  -d && npx sls offline -s dev",
     "build": "npx sls package",
+    "deploy": "npm run build && npx sls deploy",
     "lint": "eslint ./src/.",
     "prepush": "npm test",
     "pretest": "npm run lint",

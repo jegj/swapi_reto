@@ -3,9 +3,11 @@
 ## Functions
 
 - starwars-get-people
+  Obtiene una persona en base al `id` de [SWAPI](https://swapi.dev/) o la base de datos local. Usar el parametro`source`( querystring ) para distingir la fuente de datos
 - starwars-post-starships
+  Crea la persona en la base de datos local
 
-## Local
+## Desarrollo Local
 1) Crear archivo `.env` en base a [.env.dev](.env.example)
 
 
@@ -17,16 +19,20 @@
 
 ## Build
 
+Solo empaqueta las funciones
 ```sh
 npm run build
 ```
 
 ## Deploy
 
+Empaqueta y deploya
 
 ```sh
 npm run deploy
 ```
+
+__NOTE__ Instalar y configurar primero [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions) antes de ejecutar este comando
 
 ## Generar documentacion
 
